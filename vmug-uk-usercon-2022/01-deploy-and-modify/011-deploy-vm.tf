@@ -45,7 +45,7 @@ resource "vsphere_virtual_machine" "vm" {
 
   num_cpus             = "1"
   num_cores_per_socket = "1"
-  memory               = "2"
+  memory               = "2048"
   #memory               = "4"
   guest_id         = "otherLinuxGuest"
   firmware         = "efi"
