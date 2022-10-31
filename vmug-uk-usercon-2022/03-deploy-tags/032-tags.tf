@@ -7,9 +7,6 @@ variable "department_tags" {
 
 }
 
-environment_tags = ["production", "test", "development"]
-department_tags  = ["finance", "r&d", "sales"]
-
 resource "vsphere_tag" "environment-tags" {
   for_each    = toset(var.environment_tags)
   name        = each.key
@@ -18,8 +15,9 @@ resource "vsphere_tag" "environment-tags" {
 }
 
 resource "vsphere_tag" "department-tags" {
-  for_each    = toset(var.department_tags)
-  name        = each.key
+  for_each = toset(var.department_tags)
+  name     = each.key
+
   category_id = vsphere_tag_category.category-department.id
   description = "Managed by Terraform"
 }
