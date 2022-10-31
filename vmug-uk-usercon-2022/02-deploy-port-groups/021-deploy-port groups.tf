@@ -6,22 +6,12 @@ provider "vsphere" {
   allow_unverified_ssl = "true"
 }
 
-#Variable Definitions
-variable "vsphere_datacenter" {
-}
-variable "vsphere_distributed_virtual_switch" {
-}
-
-#Variable Values
-vsphere_datacenter                 = "sfo-m01-dc01"
-vsphere_distributed_virtual_switch = "sfo-m01-cl01-vds01"
-
 #Resources
 data "vsphere_datacenter" "datacenter" {
-  name = var.vsphere_datacenter
+  name = "sfo-m01-dc01"
 }
 data "vsphere_distributed_virtual_switch" "vds" {
-  name          = var.vsphere_distributed_virtual_switch
+  name          = "sfo-m01-cl01-vds01"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 resource "vsphere_distributed_port_group" "pg101" {
@@ -34,4 +24,3 @@ resource "vsphere_distributed_port_group" "pg102" {
   distributed_virtual_switch_uuid = data.vsphere_distributed_virtual_switch.vds.id
   vlan_id                         = 102
 }
-
