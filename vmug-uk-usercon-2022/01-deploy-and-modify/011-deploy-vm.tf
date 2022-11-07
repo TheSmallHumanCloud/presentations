@@ -48,7 +48,7 @@ resource "vsphere_virtual_machine" "vm" {
   memory               = "2048"
   #memory               = "4"
   guest_id         = "otherLinuxGuest"
-  firmware         = "bios"
+  firmware         = "efi"
   hardware_version = 19
   network_interface {
     network_id   = data.vsphere_network.network.id
