@@ -32,7 +32,7 @@ data "vsphere_content_library" "library" {
 }
 #Template
 data "vsphere_content_library_item" "template" {
-  name       = "smallVM"
+  name       = "PhotonOS3.0_OVA"
   library_id = data.vsphere_content_library.library.id
   type       = "OVF"
 }
