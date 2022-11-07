@@ -4,17 +4,17 @@ data "vsphere_datacenter" "dc" {
 }
 
 data "vsphere_virtual_machine" "vm" {
-  name          = "vm-01"
+  name          = var.virtual_machine_name
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
 data "vsphere_role" "administrator" {
-  label = "Administrator"
+  label = var.administrator_role
 }
 
 #Resources
 resource "vsphere_role" "customreadonly" {
-  name            = "Custom Read Only"
+  name            = var.custom_role
   role_privileges = []
 }
 
