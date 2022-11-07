@@ -43,13 +43,13 @@ resource "vsphere_virtual_machine" "vm" {
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id     = data.vsphere_datastore.datastore.id
 
-  num_cpus             = "1"
-  num_cores_per_socket = "1"
-  memory               = "2048"
-  #memory               = "4"
-  guest_id         = "otherLinuxGuest"
-  firmware         = "efi"
-  hardware_version = 19
+  num_cpus                = "1"
+  num_cores_per_socket    = "1"
+  memory                  = "2048"
+  guest_id                = "otherLinuxGuest"
+  firmware                = "efi"
+  efi_secure_boot_enabled = true
+  hardware_version        = 19
   network_interface {
     network_id   = data.vsphere_network.network.id
     adapter_type = "vmxnet3"
