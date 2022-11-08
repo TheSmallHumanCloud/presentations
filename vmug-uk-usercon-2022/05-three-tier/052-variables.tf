@@ -2,13 +2,13 @@
 variable "vsphere_server" {
   type        = string
   default     = "vm-vcsa-01.smt.com"
-  description = "vCenter Server you are deploying your templates to"
+  description = "vCenter Server"
 }
 variable "vsphere_user" {
   type        = string
   sensitive   = true
   default     = "administrator@vsphere.local"
-  description = "User with permissions to create VM's and import to the content library"
+  description = "User with permissions to build resources"
 }
 variable "vsphere_password" {
   type        = string
