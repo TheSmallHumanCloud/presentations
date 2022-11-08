@@ -43,13 +43,12 @@ resource "vsphere_virtual_machine" "vm" {
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id     = data.vsphere_datastore.datastore.id
 
-  num_cpus                = "1"
-  num_cores_per_socket    = "1"
-  memory                  = "2048"
-  guest_id                = "otherLinuxGuest"
-  firmware                = "efi"
-  efi_secure_boot_enabled = true
-  hardware_version        = 19
+  num_cpus             = "1"
+  num_cores_per_socket = "1"
+  memory               = "2048"
+  guest_id             = "vmwarePhoton64Guest"
+  firmware             = "efi"
+  hardware_version     = 19
   network_interface {
     network_id   = data.vsphere_network.network.id
     adapter_type = "vmxnet3"
@@ -75,7 +74,7 @@ resource "vsphere_virtual_machine" "vm" {
   scsi_controller_count = 1
   scsi_type             = "pvscsi"
   disk {
-    size             = 25
+    size             = 16
     label            = "Disk0.vmdk"
     eagerly_scrub    = false
     thin_provisioned = true
