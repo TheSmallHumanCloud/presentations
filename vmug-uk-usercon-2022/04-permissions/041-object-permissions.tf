@@ -13,9 +13,20 @@ data "vsphere_role" "administrator" {
 }
 
 #Resources
-resource "vsphere_role" "customreadonly" {
+resource "vsphere_role" "custom" {
   name            = var.custom_role
-  role_privileges = []
+  role_privileges = [
+    "VirtualMachine.Interact.AnswerQuestion",
+    "VirtualMachine.Interact.ConsoleInteract",
+    "VirtualMachine.Interact.DeviceConnection",
+    "VirtualMachine.Interact.PowerOff",
+    "VirtualMachine.Interact.PowerOn",
+    "VirtualMachine.Interact.Reset",
+    "VirtualMachine.Interact.SetCDMedia",
+    "VirtualMachine.Interact.SetFloppyMedia",
+    "VirtualMachine.Interact.Suspend",
+    "VirtualMachine.Interact.ToolsInstall",
+  ]
 }
 
 resource "vsphere_entity_permissions" "p1" {
@@ -28,9 +39,9 @@ resource "vsphere_entity_permissions" "p1" {
     role_id       = data.vsphere_role.administrator.id
   }
   permissions {
-    user_or_group = "corp.local\\custom_readonly"
+    user_or_group = "corp.local\\custom_role"
     propagate     = true
     is_group      = true
-    role_id       = vsphere_role.customreadonly.id
+    role_id       = vsphere_role.custom.id
   }
 }
