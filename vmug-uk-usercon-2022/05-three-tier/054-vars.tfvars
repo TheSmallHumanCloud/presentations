@@ -45,6 +45,14 @@ vsphere_port_group = {
   app = "app-network"
   db  = "db-network"
 }
+load_balancer = {
+  prod = {
+    ip = "10.200.1.50"
+  }
+  dev = {
+    ip = "10.201.1.50"
+  }
+}
 
 #VM Variables
 vsphere_template = "PhotonOS3.0_OVA"

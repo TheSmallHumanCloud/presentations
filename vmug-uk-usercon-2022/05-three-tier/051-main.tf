@@ -24,6 +24,12 @@ data "vsphere_content_library_item" "template" {
 }
 
 #Network
+data "nsxt_policy_tier1_gateway" "t1" {
+  display_name = var.t1_name
+}
+data "nsxt_policy_transport_zone" "overlay_tz" {
+  display_name = var.overlay_name
+}
 data "nsxt_policy_segment_realization" "web-network" {
   path = nsxt_policy_segment.web-network.path
 }
