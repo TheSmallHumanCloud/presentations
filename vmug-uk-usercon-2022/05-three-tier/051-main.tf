@@ -59,7 +59,7 @@ resource "vsphere_folder" "environment-folder_CREATE" {
   path          = "applications/${var.application_name}"
   type          = var.vsphere_vm_folder_type
   datacenter_id = data.vsphere_datacenter.datacenter.id
-  access        = "" ? "write" : data.vsphere_folder.exists.access
+  count         = data.vsphere_folder.exists.name == "applications/${var.application_name}" ? 1 : 0
 }
 
 resource "vsphere_folder" "child-environment-folder" {
