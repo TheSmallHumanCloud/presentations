@@ -25,13 +25,13 @@ data "vsphere_content_library_item" "template" {
 
 #Network
 data "nsxt_policy_segment_realization" "web-network" {
-  path = data.nsxt_policy_segment.web-network.path
+  path = nsxt_policy_segment.web-network.path
 }
 data "nsxt_policy_segment_realization" "app-network" {
-  path = data.nsxt_policy_segment.web-network.path
+  path = nsxt_policy_segment.web-network.path
 }
 data "nsxt_policy_segment_realization" "db-network" {
-  path = data.nsxt_policy_segment.web-network.path
+  path = nsxt_policy_segment.web-network.path
 }
 #Build Application vSphere Folders
 resource "vsphere_folder" "environment-folder" {
