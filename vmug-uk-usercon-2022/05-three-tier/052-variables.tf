@@ -1,25 +1,39 @@
 ##Provider Variables
 variable "vsphere_server" {
   type        = string
-  default     = "vm-vcsa-01.smt.com"
+  default     = "vc-l-01a.corp.local"
   description = "vCenter Server"
 }
 variable "vsphere_user" {
   type        = string
   sensitive   = true
-  default     = "administrator@vsphere.local"
   description = "User with permissions to build resources"
 }
 variable "vsphere_password" {
   type        = string
   sensitive   = true
-  default     = "VMware123!"
   description = "Password for vSphere_User"
 }
 variable "insecure_connection" {
   type        = bool
-  default     = true
+  default     = false
   description = "Requires the target vCenter Server to have a valid, trusted certificate"
+}
+
+variable "nsxt_manager" {
+  type        = string
+  default     = "nsx01.corp.local"
+  description = "NSX Manager"
+}
+variable "nsxt_user" {
+  type        = string
+  sensitive   = true
+  description = "User with permissions to build resources"
+}
+variable "nsxt_password" {
+  type        = string
+  sensitive   = true
+  description = "Password for vSphere_User"
 }
 
 ##Compute Variables
@@ -29,17 +43,14 @@ variable "vsphere_vm_folder_type" {
 }
 variable "vsphere_datacenter" {
   type        = string
-  default     = "home-lab"
   description = "Target Datacenter for the deployment"
 }
 variable "vsphere_compute_cluster" {
   type        = string
-  default     = "physical-cluster"
   description = "Target Cluster for the deployment"
 }
 variable "vsphere_datastore" {
   type        = string
-  default     = "ds-vmfs-01"
   description = "Target Datastore for the deployment"
 }
 variable "vsphere_port_group" {
@@ -50,13 +61,20 @@ variable "vsphere_library" {
   type        = string
   description = "vSphere Content Library name"
 }
-variable "environment-tag" {
-}
-variable "department-tag" {
+variable "vsphere_template" {
+  type        = string
+  description = "vSphere Content Library template name"
 }
 
 ##Virtual Machine Variables
 variable "virtualmachine" {
   type        = map(any)
   description = "Port groups for each environment and tier"
+}
+
+
+#Application Variables
+variable "application_name" {
+  type        = string
+  description = "Application name"
 }

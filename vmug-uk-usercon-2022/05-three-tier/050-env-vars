@@ -1,0 +1,6 @@
+$env:TF_VAR_vsphere_user   = "administrator@vsphere.local"
+$env:TF_VAR_vsphere_password  = "VMware1!"
+
+
+$env:TF_VAR_nsxt_user   = "admin"
+$env:TF_VAR_nsxt_password  = "VMware1!VMware1!"

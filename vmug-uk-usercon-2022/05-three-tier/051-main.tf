@@ -15,17 +15,30 @@ data "vsphere_compute_cluster" "cluster" {
 }
 #PortGroups
 data "vsphere_network" "web-network" {
-  name          = var.vsphere_port_group[terraform.workspace].web
+  name          = var.vsphere_port_group.web
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 data "vsphere_network" "app-network" {
-  name          = var.vsphere_port_group[terraform.workspace].app
+  name          = var.vsphere_port_group.app
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 data "vsphere_network" "db-network" {
-  name          = var.vsphere_port_group[terraform.workspace].db
+  name          = var.vsphere_port_group.db
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 data "vsphere_content_library" "library" {
   name = var.vsphere_library
+}
+data "vsphere_content_library_item" "template" {
+  name       = var.vsphere_template
+  library_id = data.vsphere_content_library.library.id
+  type       = "OVF"
+}
+
+#Build Application vSphere Folders
+
+resource "vsphere_folder" "application-folder" {
+  path          = "applications/${var.application_name}"
+  type          = var.vsphere_vm_folder_type
+  datacenter_id = data.vsphere_datacenter.datacenter.id
 }

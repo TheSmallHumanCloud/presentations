@@ -1,0 +1,5 @@
+vsphere_datacenter      = "sfo-m01-dc01"
+vsphere_compute_cluster = "sfo-m01-cl01"
+vsphere_datastore       = "sfo-m01-cl01-ds-vsan01"
+vsphere_library         = "Subscribed"
+vsphere_vm_folder_type  = "vm"
