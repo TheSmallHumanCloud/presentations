@@ -36,6 +36,12 @@ variable "nsxt_password" {
   description = "Password for vSphere_User"
 }
 
+#Network Variables
+variable "nsxt_networks" {
+  type        = map(any)
+  description = "NSX Segments"
+}
+
 ##Compute Variables
 variable "vsphere_vm_folder_type" {
   type        = string
