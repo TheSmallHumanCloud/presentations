@@ -11,7 +11,7 @@ vsphere_port_group = {
 #VM Variables
 vsphere_template = "PhotonOS3.0_OVA"
 virtualmachine = {
-  web01 = {
+  web = {
     #Node1
     a_computer_name = "web-01"
     a_ipv4_address  = "10.200.1.10"
