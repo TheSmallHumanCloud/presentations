@@ -53,7 +53,7 @@ data "vsphere_network" "db-network" {
 }
 #Build Application vSphere Folders
 resource "vsphere_folder" "environment-folder" {
-  path          = "applications/${var.application_name}/${terraform.workspace}"
+  path          = "applications/${terraform.workspace}"
   type          = var.vsphere_vm_folder_type
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
