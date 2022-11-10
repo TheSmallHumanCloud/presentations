@@ -52,10 +52,14 @@ data "vsphere_network" "db-network" {
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 #Build Application vSphere Folders
-resource "vsphere_folder" "environment-folder" {
+data "vsphere_folder" "exists" {
+  path = "applications/${var.application_name}"
+}
+resource "vsphere_folder" "environment-folder_CREATE" {
   path          = "applications/${var.application_name}"
   type          = var.vsphere_vm_folder_type
   datacenter_id = data.vsphere_datacenter.datacenter.id
+  access        = "" ? "write" : data.vsphere_folder.exists.access
 }
 
 resource "vsphere_folder" "child-environment-folder" {
