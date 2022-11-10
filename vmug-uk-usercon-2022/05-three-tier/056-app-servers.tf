@@ -7,6 +7,9 @@ resource "vsphere_folder" "app-tier-folder" {
 }
 
 resource "vsphere_virtual_machine" "app-01" {
+  depends_on = [
+    nsxt_policy_segment.app-network
+  ]
   name             = "vm-${terraform.workspace}-${var.virtualmachine.app.a_computer_name}"
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id     = data.vsphere_datastore.datastore.id
@@ -52,6 +55,9 @@ resource "vsphere_virtual_machine" "app-01" {
 }
 
 resource "vsphere_virtual_machine" "app-02" {
+  depends_on = [
+    nsxt_policy_segment.app-network
+  ]
   name             = "vm-${terraform.workspace}-${var.virtualmachine.app.b_computer_name}"
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id     = data.vsphere_datastore.datastore.id
