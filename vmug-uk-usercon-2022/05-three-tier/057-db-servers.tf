@@ -1,7 +1,7 @@
 #db Server Resources
 
 resource "vsphere_folder" "db-tier-folder" {
-  path          = "${vsphere_folder.environment-folder.path}/${var.virtualmachine.db.folder}"
+  path          = "${vsphere_folder.child-environment-folder.path}/${var.virtualmachine.db.folder}"
   type          = var.vsphere_vm_folder_type
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }

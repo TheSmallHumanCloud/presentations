@@ -1,7 +1,7 @@
 #Web Server Resources
 
 resource "vsphere_folder" "web-tier-folder" {
-  path          = "${vsphere_folder.environment-folder.path}/${var.virtualmachine.web.folder}"
+  path          = "${vsphere_folder.child-environment-folder.path}/${var.virtualmachine.web.folder}"
   type          = var.vsphere_vm_folder_type
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
