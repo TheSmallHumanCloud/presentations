@@ -34,14 +34,14 @@ data "vsphere_network" "web-network" {
 data "nsxt_policy_segment_realization" "app-network" {
   path = nsxt_policy_segment.web-network.path
 }
-data "vsphere_network" "web-network" {
+data "vsphere_network" "app-network" {
   name          = data.nsxt_policy_segment_realization.app-network.network_name
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 data "nsxt_policy_segment_realization" "db-network" {
   path = nsxt_policy_segment.web-network.path
 }
-data "vsphere_network" "web-network" {
+data "vsphere_network" "db-network" {
   name          = data.nsxt_policy_segment_realization.db-network.network_name
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
