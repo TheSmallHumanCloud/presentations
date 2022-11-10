@@ -1,0 +1,44 @@
+#Resources
+resource "vsphere_virtual_machine" "vm" {
+  name             = "vm-01"
+  resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+  datastore_id     = data.vsphere_datastore.datastore.id
+
+  num_cpus             = "1"
+  num_cores_per_socket = "1"
+  memory               = "2048"
+  guest_id             = "vmwarePhoton64Guest"
+  firmware             = "efi"
+  hardware_version     = 19
+  network_interface {
+    network_id   = data.vsphere_network.network.id
+    adapter_type = "vmxnet3"
+  }
+  clone {
+    template_uuid = data.vsphere_content_library_item.template.id
+    timeout       = 60
+    customize {
+      timeout = 30
+      linux_options {
+        host_name = "vm-01"
+        domain    = "corp.local"
+      }
+      network_interface {
+        ipv4_address = "192.168.100.10"
+        ipv4_netmask = 24
+      }
+      ipv4_gateway    = "192.168.100.1"
+      dns_server_list = ["192.168.10.1"]
+      dns_suffix_list = ["corp.local"]
+    }
+  }
+  scsi_controller_count = 1
+  scsi_type             = "pvscsi"
+  disk {
+    size             = 16
+    label            = "Disk0.vmdk"
+    eagerly_scrub    = false
+    thin_provisioned = true
+    unit_number      = 0
+  }
+}
