@@ -32,7 +32,7 @@ resource "vsphere_virtual_machine" "web-01" {
         domain    = var.virtualmachine.web.join_domain
       }
       network_interface {
-        ipv4_address = var.virtualmachine.web.ipv4_address
+        ipv4_address = var.virtualmachine.web.a_ipv4_address
         ipv4_netmask = var.virtualmachine.web.ipv4_netmask
       }
       ipv4_gateway    = var.virtualmachine.web.ipv4_gateway
@@ -77,7 +77,7 @@ resource "vsphere_virtual_machine" "web-02" {
         domain    = var.virtualmachine.web.join_domain
       }
       network_interface {
-        ipv4_address = var.virtualmachine.web.a_ipv4_address
+        ipv4_address = var.virtualmachine.web.b_ipv4_address
         ipv4_netmask = var.virtualmachine.web.ipv4_netmask
       }
       ipv4_gateway    = var.virtualmachine.web.ipv4_gateway
