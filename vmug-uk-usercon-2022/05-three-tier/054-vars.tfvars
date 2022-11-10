@@ -4,25 +4,23 @@ application_name = "application-abc"
 #Network Variables
 t1_name      = "lab-t1"
 overlay_name = "sfo-m01-tz-overlay01"
-
 nsxt_networks = {
   web = {
-    display_name = "web-network"
+    display_name = "app-abc-web-network"
     description  = "Segment created by Terraform"
     cidr         = "10.200.1.1/24"
   }
   app = {
-    display_name = "app-network"
+    display_name = "app-abc-app-network"
     description  = "Segment created by Terraform"
     cidr         = "10.200.2.1/24"
   }
   db = {
-    display_name = "db-network"
+    display_name = "app-abc-db-network"
     description  = "Segment created by Terraform"
     cidr         = "10.200.3.1/24"
   }
 }
-
 vsphere_port_group = {
   web = "web-network"
   app = "app-network"
