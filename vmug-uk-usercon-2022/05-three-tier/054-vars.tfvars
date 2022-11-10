@@ -5,40 +5,40 @@ application_name = "application-abc"
 t1_name      = "lab-t1"
 overlay_name = "sfo-m01-tz-overlay01"
 nsxt_networks = {
-    prod{
-  web = {
-    display_name = "app-abc-web-network"
-    description  = "Segment created by Terraform"
-    cidr         = "10.200.1.1/24"
-  }
-  app = {
-    display_name = "app-abc-app-network"
-    description  = "Segment created by Terraform"
-    cidr         = "10.200.2.1/24"
-  }
-  db = {
-    display_name = "app-abc-db-network"
-    description  = "Segment created by Terraform"
-    cidr         = "10.200.3.1/24"
-  }
+  prod = {
+    web = {
+      display_name = "app-abc-web-network"
+      description  = "Segment created by Terraform"
+      cidr         = "10.200.1.1/24"
     }
-    dev{
-          web = {
-    display_name = "app-abc-web-network"
-    description  = "Segment created by Terraform"
-    cidr         = "10.201.1.1/24"
-  }
-  app = {
-    display_name = "app-abc-app-network"
-    description  = "Segment created by Terraform"
-    cidr         = "10.201.2.1/24"
-  }
-  db = {
-    display_name = "app-abc-db-network"
-    description  = "Segment created by Terraform"
-    cidr         = "10.201.3.1/24"
+    app = {
+      display_name = "app-abc-app-network"
+      description  = "Segment created by Terraform"
+      cidr         = "10.200.2.1/24"
     }
-}
+    db = {
+      display_name = "app-abc-db-network"
+      description  = "Segment created by Terraform"
+      cidr         = "10.200.3.1/24"
+    }
+  }
+  dev = {
+    web = {
+      display_name = "app-abc-web-network"
+      description  = "Segment created by Terraform"
+      cidr         = "10.201.1.1/24"
+    }
+    app = {
+      display_name = "app-abc-app-network"
+      description  = "Segment created by Terraform"
+      cidr         = "10.201.2.1/24"
+    }
+    db = {
+      display_name = "app-abc-db-network"
+      description  = "Segment created by Terraform"
+      cidr         = "10.201.3.1/24"
+    }
+  }
 }
 vsphere_port_group = {
   web = "web-network"
