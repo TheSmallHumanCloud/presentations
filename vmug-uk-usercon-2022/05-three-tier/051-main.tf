@@ -37,8 +37,14 @@ data "vsphere_content_library_item" "template" {
 
 #Build Application vSphere Folders
 
-resource "vsphere_folder" "application-folder" {
+resource "vsphere_folder" "environment-folder" {
   path          = "applications/${var.application_name}"
+  type          = var.vsphere_vm_folder_type
+  datacenter_id = data.vsphere_datacenter.datacenter.id
+}
+
+resource "vsphere_folder" "child-environment-folder" {
+  path          = "${vsphere_folder.environment-folder.path}/${terraform.workspace}"
   type          = var.vsphere_vm_folder_type
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
