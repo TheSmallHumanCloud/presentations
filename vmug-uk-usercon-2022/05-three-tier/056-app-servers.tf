@@ -19,7 +19,7 @@ resource "vsphere_virtual_machine" "app-01" {
   firmware             = var.virtualmachine.app.firmware
   hardware_version     = var.virtualmachine.app.hardware_version
   network_interface {
-    network_id   = nsxt_policy_segment.app-network.id
+    network_id   = data.nsxt_policy_segment.app-network.id
     adapter_type = var.virtualmachine.app.adapter_type
   }
   clone {
@@ -64,7 +64,7 @@ resource "vsphere_virtual_machine" "app-02" {
   firmware             = var.virtualmachine.app.firmware
   hardware_version     = var.virtualmachine.app.hardware_version
   network_interface {
-    network_id   = nsxt_policy_segment.app-network.id
+    network_id   = data.nsxt_policy_segment.app-network.id
     adapter_type = var.virtualmachine.app.adapter_type
   }
   clone {
