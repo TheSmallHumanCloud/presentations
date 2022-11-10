@@ -27,11 +27,23 @@ data "vsphere_content_library_item" "template" {
 data "nsxt_policy_segment_realization" "web-network" {
   path = nsxt_policy_segment.web-network.path
 }
+data "vsphere_network" "web-network" {
+  name          = data.nsxt_policy_segment_realization.web-network.network_name
+  datacenter_id = data.vsphere_datacenter.datacenter.id
+}
 data "nsxt_policy_segment_realization" "app-network" {
   path = nsxt_policy_segment.web-network.path
 }
+data "vsphere_network" "web-network" {
+  name          = data.nsxt_policy_segment_realization.app-network.network_name
+  datacenter_id = data.vsphere_datacenter.datacenter.id
+}
 data "nsxt_policy_segment_realization" "db-network" {
   path = nsxt_policy_segment.web-network.path
+}
+data "vsphere_network" "web-network" {
+  name          = data.nsxt_policy_segment_realization.db-network.network_name
+  datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 #Build Application vSphere Folders
 resource "vsphere_folder" "environment-folder" {
