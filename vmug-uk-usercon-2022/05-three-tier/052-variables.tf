@@ -16,7 +16,7 @@ variable "vsphere_password" {
 }
 variable "insecure_connection" {
   type        = bool
-  default     = false
+  default     = true
   description = "Requires the target vCenter Server to have a valid, trusted certificate"
 }
 
