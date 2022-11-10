@@ -32,14 +32,14 @@ data "vsphere_network" "web-network" {
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 data "nsxt_policy_segment_realization" "app-network" {
-  path = nsxt_policy_segment.web-network.path
+  path = nsxt_policy_segment.app-network.path
 }
 data "vsphere_network" "app-network" {
   name          = data.nsxt_policy_segment_realization.app-network.network_name
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 data "nsxt_policy_segment_realization" "db-network" {
-  path = nsxt_policy_segment.web-network.path
+  path = nsxt_policy_segment.db-network.path
 }
 data "vsphere_network" "db-network" {
   name          = data.nsxt_policy_segment_realization.db-network.network_name
