@@ -41,7 +41,14 @@ variable "nsxt_networks" {
   type        = map(any)
   description = "NSX Segments"
 }
-
+variable "t1_name" {
+  type        = string
+  description = "Tier 1 NSX-T router"
+}
+variable "overlay_name" {
+  type        = string
+  description = "Overlay Network name"
+}
 ##Compute Variables
 variable "vsphere_vm_folder_type" {
   type        = string
