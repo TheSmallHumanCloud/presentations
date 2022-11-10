@@ -50,7 +50,7 @@ variable "overlay_name" {
   description = "Overlay Network name"
 }
 variable "load_balancer" {
-  type        = string
+  type        = map(any)
   description = "Overlay Network name"
 }
 ##Compute Variables
