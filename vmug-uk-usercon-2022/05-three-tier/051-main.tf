@@ -55,15 +55,14 @@ data "vsphere_network" "db-network" {
 data "vsphere_folder" "exists" {
   path = "applications/${var.application_name}"
 }
-resource "vsphere_folder" "environment-folder_CREATE" {
-  path          = "applications/${var.application_name}"
+resource "vsphere_folder" "environment-folder" {
+  path          = "applications/${var.application_name}/${terraform.workspace}"
   type          = var.vsphere_vm_folder_type
   datacenter_id = data.vsphere_datacenter.datacenter.id
-  count         = data.vsphere_folder.exists.name == "applications/${var.application_name}" ? 1 : 0
 }
 
-resource "vsphere_folder" "child-environment-folder" {
-  path          = "${vsphere_folder.environment-folder.path}/${terraform.workspace}"
-  type          = var.vsphere_vm_folder_type
-  datacenter_id = data.vsphere_datacenter.datacenter.id
-}
+#resource "vsphere_folder" "child-environment-folder" {
+#  path          = vsphere_folder.environment-folder.path
+#  type          = var.vsphere_vm_folder_type
+#  datacenter_id = data.vsphere_datacenter.datacenter.id
+#ß}
