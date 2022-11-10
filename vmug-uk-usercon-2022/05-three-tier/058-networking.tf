@@ -26,3 +26,37 @@ resource "nsxt_policy_segment" "db-network" {
     cidr = var.nsxt_networks[terraform.workspace].db.cidr
   }
 }
+
+#NSX-T Load Balancer
+#Pool
+resource "nsxt_policy_lb_pool" "webservice" {
+  display_name         = "${application_name}-${terraform.workspace}-load-balancer-pool"
+  description          = "Terraform provisioned LB Pool"
+  algorithm            = "IP_HASH"
+  min_active_members   = 2
+  active_monitor_path  = "/infra/lb-monitor-profiles/default-icmp-lb-monitor"
+  passive_monitor_path = "/infra/lb-monitor-profiles/default-passive-lb-monitor"
+  member {
+    admin_state                = "ENABLED"
+    backup_member              = false
+    display_name               = "vm-${terraform.workspace}-${var.virtualmachine.web.a_computer_name}"
+    ip_address                 = var.virtualmachine.web.a_ipv4_address
+    max_concurrent_connections = 12
+    port                       = "80"
+    weight                     = 1
+  }
+  member {
+    admin_state                = "ENABLED"
+    backup_member              = false
+    display_name               = "vm-${terraform.workspace}-${var.virtualmachine.web.b_computer_name}"
+    ip_address                 = var.virtualmachine.web.b_ipv4_address
+    max_concurrent_connections = 12
+    port                       = "80"
+    weight                     = 1
+  }
+  snat {
+    type = "AUTOMAP"
+  }
+  tcp_multiplexing_enabled = true
+  tcp_multiplexing_number  = 8
+}
