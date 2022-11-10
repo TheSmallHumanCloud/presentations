@@ -7,9 +7,6 @@ resource "vsphere_folder" "db-tier-folder" {
 }
 
 resource "vsphere_virtual_machine" "db-01" {
-  depends_on = [
-    nsxt_policy_segment.db-network
-  ]
   name             = "vm-${terraform.workspace}-${var.virtualmachine.db.a_computer_name}"
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id     = data.vsphere_datastore.datastore.id
@@ -55,9 +52,6 @@ resource "vsphere_virtual_machine" "db-01" {
 }
 
 resource "vsphere_virtual_machine" "db-02" {
-  depends_on = [
-    nsxt_policy_segment.db-network
-  ]
   name             = "vm-${terraform.workspace}-${var.virtualmachine.db.b_computer_name}"
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id     = data.vsphere_datastore.datastore.id
