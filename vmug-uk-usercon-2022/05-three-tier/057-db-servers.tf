@@ -19,7 +19,7 @@ resource "vsphere_virtual_machine" "db-01" {
   firmware             = var.virtualmachine.db.firmware
   hardware_version     = var.virtualmachine.db.hardware_version
   network_interface {
-    network_id   = data.vsphere_network.db-network.id
+    network_id   = nsxt_policy_segment.db-network.id
     adapter_type = var.virtualmachine.db.adapter_type
   }
   clone {
@@ -64,7 +64,7 @@ resource "vsphere_virtual_machine" "db-02" {
   firmware             = var.virtualmachine.db.firmware
   hardware_version     = var.virtualmachine.db.hardware_version
   network_interface {
-    network_id   = data.vsphere_network.db-network.id
+    network_id   = nsxt_policy_segment.db-network.id
     adapter_type = var.virtualmachine.db.adapter_type
   }
   clone {
