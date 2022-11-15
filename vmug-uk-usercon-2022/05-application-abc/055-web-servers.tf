@@ -53,6 +53,9 @@ resource "vsphere_virtual_machine" "web-01" {
     vsphere_tag.department.id,
     data.vsphere_tag.environment-tag.id
   ]
+  provisioner "local-exec" {
+    command = "powershell.exe -command 'Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force'"
+  }
 }
 
 resource "vsphere_virtual_machine" "web-02" {
@@ -102,4 +105,7 @@ resource "vsphere_virtual_machine" "web-02" {
     vsphere_tag.department.id,
     data.vsphere_tag.environment-tag.id
   ]
+  provisioner "local-exec" {
+    command = "powershell.exe -command 'Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force'"
+  }
 }
