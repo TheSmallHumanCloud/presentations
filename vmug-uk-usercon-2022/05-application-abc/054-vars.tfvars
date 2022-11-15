@@ -3,8 +3,11 @@ application_name     = "application-abc"
 department           = "central-services"
 category_environment = "environment"
 category_department  = "department"
-environment_tags     = ["prod", "dev"]
-department_tags      = ["finance", "r&d", "sales"]
+environment-tag = {
+  dev = "development"
+  prd = "production"
+}
+department_tags = ["finance", "r&d", "sales"]
 
 #Network Variables
 t1_name      = "lab-t1"

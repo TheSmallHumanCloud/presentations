@@ -65,7 +65,7 @@ data "vsphere_tag" "environment-tag" {
 }
 resource "vsphere_tag" "department" {
   name        = var.department
-  category_id = data.vsphere_tag_category.category-department
+  category_id = data.vsphere_tag_category.category-department.id
   description = "Managed by Terraform"
 }
 
