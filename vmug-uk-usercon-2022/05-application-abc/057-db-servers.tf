@@ -49,6 +49,10 @@ resource "vsphere_virtual_machine" "db-01" {
     thin_provisioned = var.virtualmachine.db.disk_thin_provisioned_0
     unit_number      = var.virtualmachine.db.disk_unit_number_0
   }
+  tags = [
+    vsphere_tag.department.id,
+    data.vsphere_tag.environment-tag.id
+  ]
 }
 
 resource "vsphere_virtual_machine" "db-02" {
@@ -94,4 +98,8 @@ resource "vsphere_virtual_machine" "db-02" {
     thin_provisioned = var.virtualmachine.db.disk_thin_provisioned_0
     unit_number      = var.virtualmachine.db.disk_unit_number_0
   }
+  tags = [
+    vsphere_tag.department.id,
+    data.vsphere_tag.environment-tag.id
+  ]
 }
