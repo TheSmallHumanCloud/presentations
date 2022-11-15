@@ -61,6 +61,7 @@ load_balancer = {
     ip = "10.201.1.50"
   }
 }
+lb_app_profile = "default-http-lb-app-profile"
 
 #VM Variables
 vsphere_template = "PhotonOS3.0_OVA"

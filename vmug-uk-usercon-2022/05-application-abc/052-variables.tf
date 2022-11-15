@@ -53,6 +53,9 @@ variable "load_balancer" {
   type        = map(any)
   description = "Overlay Network name"
 }
+variable "lb_app_profile" {
+}
+
 ##Compute Variables
 variable "vsphere_vm_folder_type" {
   type        = string

@@ -27,3 +27,62 @@ resource "nsxt_policy_segment" "db-network" {
   }
 }
 
+#NSX-T Load Balancer
+#Pool
+resource "nsxt_policy_lb_pool" "webservice" {
+  display_name         = "${var.application_name}-${terraform.workspace}-load-balancer-pool"
+  description          = "Terraform provisioned LB Pool"
+  algorithm            = "IP_HASH"
+  min_active_members   = 2
+  active_monitor_path  = "/infra/lb-monitor-profiles/default-icmp-lb-monitor"
+  passive_monitor_path = "/infra/lb-monitor-profiles/default-passive-lb-monitor"
+  member {
+    admin_state                = "ENABLED"
+    backup_member              = false
+    display_name               = "vm-${terraform.workspace}-${var.virtualmachine.web.a_computer_name}"
+    ip_address                 = var.virtualmachine.web.a_ipv4_address
+    max_concurrent_connections = 12
+    port                       = "80"
+    weight                     = 1
+  }
+  member {
+    admin_state                = "ENABLED"
+    backup_member              = false
+    display_name               = "vm-${terraform.workspace}-${var.virtualmachine.web.b_computer_name}"
+    ip_address                 = var.virtualmachine.web.b_ipv4_address
+    max_concurrent_connections = 12
+    port                       = "80"
+    weight                     = 1
+  }
+  snat {
+    type = "AUTOMAP"
+  }
+  tcp_multiplexing_enabled = true
+  tcp_multiplexing_number  = 8
+}
+
+#Service
+resource "nsxt_policy_lb_service" "webservice" {
+  display_name      = "${var.application_name}-${terraform.workspace}-web-service"
+  description       = "Terraform provisioned Service"
+  connectivity_path = data.nsxt_policy_tier1_gateway.t1.path
+  size              = "SMALL"
+  enabled           = true
+  error_log_level   = "ERROR"
+}
+#Loadbalancer
+resource "nsxt_policy_lb_virtual_server" "webservice" {
+  display_name               = "${var.application_name}-${terraform.workspace}-load-balancer"
+  description                = "Terraform provisioned Virtual Server"
+  access_log_enabled         = true
+  application_profile_path   = data.nsxt_policy_lb_app_profile.default.path
+  enabled                    = true
+  ip_address                 = "10.10.10.21"
+  ports                      = ["443"]
+  default_pool_member_ports  = ["80"]
+  service_path               = nsxt_policy_lb_service.webservice.path
+  max_concurrent_connections = 6
+  max_new_connection_rate    = 20
+  pool_path                  = nsxt_policy_lb_pool.webservice.path
+
+}
