@@ -98,4 +98,8 @@ resource "vsphere_virtual_machine" "web-02" {
     thin_provisioned = var.virtualmachine.web.disk_thin_provisioned_0
     unit_number      = var.virtualmachine.web.disk_unit_number_0
   }
+  tags = [
+    vsphere_tag.department.id,
+    data.vsphere_tag.environment-tag.id
+  ]
 }

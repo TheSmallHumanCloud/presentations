@@ -3,7 +3,7 @@ application_name     = "application-abc"
 department           = "central-services"
 category_environment = "environment"
 category_department  = "department"
-environment-tag = {
+environment-tags = {
   dev = "development"
   prd = "production"
 }
