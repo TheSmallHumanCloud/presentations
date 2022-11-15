@@ -51,6 +51,24 @@ data "vsphere_network" "db-network" {
   name          = data.nsxt_policy_segment_realization.db-network.network_name
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
+
+#Tags
+data "vsphere_tag_category" "category-environment" {
+  name = var.category_environment
+}
+data "vsphere_tag_category" "category-department" {
+  name = var.category_department
+}
+data "vsphere_tag" "environment-tag" {
+  name        = var.environment_tags[terraform.workspace]
+  category_id = data.vsphere_tag_category.category-environment.id
+}
+resource "vsphere_tag" "department" {
+  name        = var.department
+  category_id = data.vsphere_tag_category.category-department
+  description = "Managed by Terraform"
+}
+
 #Build Application vSphere Folders
 resource "vsphere_folder" "environment-folder" {
   path          = "applications/${terraform.workspace}"

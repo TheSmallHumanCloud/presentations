@@ -90,8 +90,25 @@ variable "virtualmachine" {
 }
 
 
-#Application Variables
+#Application & Department Variables
 variable "application_name" {
   type        = string
   description = "Application name"
+}
+variable "department" {
+  type        = string
+  description = "Department name"
+}
+
+#Tag Variables
+variable "category_environment" {
+}
+variable "category_department" {
+}
+variable "environment_tags" {
+  description = "List of environment tags"
+}
+variable "department_tags" {
+  description = "List of department tags"
+
 }

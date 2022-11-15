@@ -1,5 +1,10 @@
 ##Other Variables
-application_name = "application-abc"
+application_name     = "application-abc"
+department           = "central-services"
+category_environment = "environment"
+category_department  = "department"
+environment_tags     = ["prod", "dev"]
+department_tags      = ["finance", "r&d", "sales"]
 
 #Network Variables
 t1_name      = "lab-t1"
