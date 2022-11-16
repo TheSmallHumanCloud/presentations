@@ -6,7 +6,6 @@ environment_tags = {
   dev = "development"
   prod = "production"
 }
-department_tags = ["finance", "r&d", "sales"]
 
 #Network Variables
 t1_name      = "lab-t1"
@@ -61,6 +60,14 @@ load_balancer = {
   }
 }
 lb_app_profile = "default-http-lb-app-profile"
+virtual_server = {
+  prod = {
+    ip = "10.10.20.21"
+  }
+  dev = {
+    ip = "10.10.10.21"
+  }
+}
 
 #VM Variables
 vsphere_template = "PhotonOS3.0_OVA"

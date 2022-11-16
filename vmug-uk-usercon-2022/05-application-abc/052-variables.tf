@@ -55,6 +55,10 @@ variable "load_balancer" {
 }
 variable "lb_app_profile" {
 }
+variable "virtual_server" {
+  type        = map(any)
+  description = "Virtual Server ip's"
+}
 
 ##Compute Variables
 variable "vsphere_vm_folder_type" {

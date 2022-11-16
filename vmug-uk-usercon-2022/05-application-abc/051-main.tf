@@ -51,6 +51,10 @@ data "vsphere_network" "db-network" {
   name          = data.nsxt_policy_segment_realization.db-network.network_name
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
+
+data "nsxt_policy_lb_service" "webservice" {
+  display_name      = "lb-01"
+}
 data "nsxt_policy_lb_app_profile" "default" {
   type         = "HTTP"
   display_name = var.lb_app_profile

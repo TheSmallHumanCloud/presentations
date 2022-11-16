@@ -61,15 +61,6 @@ resource "nsxt_policy_lb_pool" "webservice" {
   tcp_multiplexing_number  = 8
 }
 
-#Service
-resource "nsxt_policy_lb_service" "webservice" {
-  display_name      = "${var.application_name}-${terraform.workspace}-web-service"
-  description       = "Terraform provisioned Service"
-  connectivity_path = data.nsxt_policy_tier1_gateway.t1.path
-  size              = "SMALL"
-  enabled           = true
-  error_log_level   = "ERROR"
-}
 #Loadbalancer
 resource "nsxt_policy_lb_virtual_server" "webservice" {
   display_name               = "${var.application_name}-${terraform.workspace}-load-balancer"
@@ -77,10 +68,10 @@ resource "nsxt_policy_lb_virtual_server" "webservice" {
   access_log_enabled         = true
   application_profile_path   = data.nsxt_policy_lb_app_profile.default.path
   enabled                    = true
-  ip_address                 = "10.10.10.21"
+  ip_address                 = var.virtual_server[terraform.workspace].ip
   ports                      = ["443"]
   default_pool_member_ports  = ["80"]
-  service_path               = nsxt_policy_lb_service.webservice.path
+  service_path               = data.nsxt_policy_lb_service.webservice.path
   max_concurrent_connections = 6
   max_new_connection_rate    = 20
   pool_path                  = nsxt_policy_lb_pool.webservice.path
