@@ -5,7 +5,7 @@ category_environment = "environment"
 category_department  = "department"
 environment_tags = {
   dev = "development"
-  prd = "production"
+  prod = "production"
 }
 department_tags = ["finance", "r&d", "sales"]
 
