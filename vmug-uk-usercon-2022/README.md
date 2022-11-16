@@ -1,7 +1,4 @@
-<img src="https://user-images.githubusercontent.com/65562694/202051799-793a3ff2-0a6f-4d38-91e2-b0d798ad2159.png" style="width:100px;height:100px;"><img src="https://user-images.githubusercontent.com/65562694/202051134-20c115f7-80e2-4a21-a509-dac199accc99.png" style="width:140px;height:100px;">
-
-
-
+<img src="https://user-images.githubusercontent.com/65562694/202052116-b9876285-fcaf-479e-a831-2b56c3ec0381.png" style="width:100px;height:100px;"><img src="https://user-images.githubusercontent.com/65562694/202051134-20c115f7-80e2-4a21-a509-dac199accc99.png" style="width:140px;height:100px;">
 
 # An Introduction to Terraform with vSphere
 
