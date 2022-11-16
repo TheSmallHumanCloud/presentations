@@ -106,12 +106,6 @@ variable "department" {
 #Tag Variables
 variable "category_environment" {
 }
-variable "category_department" {
-}
 variable "environment_tags" {
   description = "List of environment tags"
-}
-variable "department_tags" {
-  description = "List of department tags"
-
 }

@@ -60,17 +60,9 @@ data "nsxt_policy_lb_app_profile" "default" {
 data "vsphere_tag_category" "category-environment" {
   name = var.category_environment
 }
-data "vsphere_tag_category" "category-department" {
-  name = var.category_department
-}
 data "vsphere_tag" "environment-tag" {
   name        = var.environment_tags[terraform.workspace]
   category_id = data.vsphere_tag_category.category-environment.id
-}
-resource "vsphere_tag" "department" {
-  name        = var.department
-  category_id = data.vsphere_tag_category.category-department.id
-  description = "Managed by Terraform"
 }
 
 #Build Application vSphere Folders

@@ -2,7 +2,6 @@
 application_name     = "application-abc"
 department           = "central-services"
 category_environment = "environment"
-category_department  = "department"
 environment_tags = {
   dev = "development"
   prod = "production"

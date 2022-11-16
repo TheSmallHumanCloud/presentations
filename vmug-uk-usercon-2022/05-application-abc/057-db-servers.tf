@@ -50,7 +50,6 @@ resource "vsphere_virtual_machine" "db-01" {
     unit_number      = var.virtualmachine.db.disk_unit_number_0
   }
   tags = [
-    vsphere_tag.department.id,
     data.vsphere_tag.environment-tag.id
   ]
 }
@@ -99,7 +98,6 @@ resource "vsphere_virtual_machine" "db-02" {
     unit_number      = var.virtualmachine.db.disk_unit_number_0
   }
   tags = [
-    vsphere_tag.department.id,
     data.vsphere_tag.environment-tag.id
   ]
 }

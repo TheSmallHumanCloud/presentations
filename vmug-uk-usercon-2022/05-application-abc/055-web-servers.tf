@@ -50,7 +50,6 @@ resource "vsphere_virtual_machine" "web-01" {
     unit_number      = var.virtualmachine.web.disk_unit_number_0
   }
   tags = [
-    vsphere_tag.department.id,
     data.vsphere_tag.environment-tag.id
   ]
   provisioner "local-exec" {
@@ -102,7 +101,6 @@ resource "vsphere_virtual_machine" "web-02" {
     unit_number      = var.virtualmachine.web.disk_unit_number_0
   }
   tags = [
-    vsphere_tag.department.id,
     data.vsphere_tag.environment-tag.id
   ]
   provisioner "local-exec" {
