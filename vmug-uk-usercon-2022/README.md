@@ -2,9 +2,10 @@
 
 # An Introduction to Terraform with vSphere
 
-## sub title
+#### Presentation looking at the basics of Terraform and how it can be used to manage vSphere & NSX infrastructure.
 
 ## Code Examples
+All code referenced in the presentation as examples.
 
 ```console
 ├── 01-deploy-and-modify
@@ -15,13 +16,20 @@
 │   ├── 031-tag-categories.tf
 │   ├── 032-tags.tf
 │   ├── 033-providers.tf
+│   ├── 034-vars.tfvars.tf
 ├── 04-permissions
 │   ├── 041-object-permissions.tf
 │   ├── 042-providers.tf
 │   ├── 043-variables.tf
+│   ├── 044-vars.tfvars.tf
 ├── 05-5deploy-tags
 │   ├── 051-main.tf
-│   ├── 052-providers.tf
-│   ├── 053-variables.tf
+│   ├── 052-variables.tf
+│   ├── 053-providers.tf
+│   ├── 054-common-vars.tfvars.tf
 │   ├── 054-vars.tfvars.tf
+│   ├── 055-web-servers.tf
+│   ├── 056-app-servers.tf
+│   ├── 057-db-servers.tf
+│   ├── 058-networking.tf
 ```
