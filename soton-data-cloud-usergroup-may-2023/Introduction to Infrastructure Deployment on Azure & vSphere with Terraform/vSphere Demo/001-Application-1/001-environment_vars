@@ -1,0 +1,5 @@
+$env:TF_VAR_vsphere_user          = "administrator@vsphere.local"
+$env:TF_VAR_vsphere_password      = "VMware123!"
+$env:TF_VAR_domain_admin_user     = "administrator@my-sddc.vcd"
+$env:TF_VAR_domain_admin_password = "VMware123!"
+
